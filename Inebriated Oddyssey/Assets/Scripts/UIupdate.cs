@@ -12,6 +12,12 @@ public class UIupdate : MonoBehaviour
     int score;
     int health;
 
+    //For dynamic changes to enemy strength
+    int damage;
+
+    //For dynamic changes to enemy points upon defeat
+    int enemyWorth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +36,14 @@ public class UIupdate : MonoBehaviour
     public void EarnScore()
     {
         //Called in Enemy script with an OnTriggerEnter2D void, triggers when projectile hits Enemy collider
-        score = score + 1;
+        score = score + enemyWorth;
         scoreText.text = "Score: " + score;
     }
 
     public void TakeDamage()
     {
         //Called in Player script with an OnTriggerEnter2D void, triggers when Enemy/Enemy projectile hits Player collider
-        health = health - 1;
+        health = health - damage;
         scoreText.text = "Health: " + health;
     }
 }

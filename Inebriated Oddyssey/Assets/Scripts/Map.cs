@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    public GameObject[] Objects;
+    // This is gonna become a get compenent of the level 1 array created in map manager 
+    private GameObject[] Objects;
     // Start is called before the first frame update
     
     //this is referring to the spawn-points that are set on each map.
@@ -22,6 +23,7 @@ public class Map : MonoBehaviour
 
     void Spawner()
     {
+        Objects = GameObject.Find("Main Camera").GetComponent<MapManager>().level1Ob;
         int rand =  Random.Range(0, Objects.Length);
         Instantiate(Objects[rand], transform.position, Quaternion.identity);
         //here the spawnpoints will become unactive after they are spawned in by the function

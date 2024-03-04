@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
 
     public int health = 3;
 
-    public SpriteRenderer PlayerColor;
-
-    private float DamageFlashTime = 0.2f;
     private float vInput;
     private float hInput;
 
@@ -54,22 +51,5 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        //Makes the player flash red when hit by an enemy.
-        if (col.gameObject.tag == "Enemy")
-        {
-            StartCoroutine(DamageAnim(PlayerColor));
-        }
-    }
-
-    //Makes a sprite flash red.
-    IEnumerator DamageAnim(SpriteRenderer sprite)
-    {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(DamageFlashTime);
-        sprite.color = Color.white;
     }
 }

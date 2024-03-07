@@ -13,10 +13,10 @@ public class UIController : MonoBehaviour
     int health;
 
     //For dynamic changes to enemy strength
-    int damage;
+    public int damage;
 
     //For dynamic changes to enemy points upon defeat
-    int enemyWorth;
+    public int enemyWorth;
 
     // Start is called before the first frame update
     void Start()

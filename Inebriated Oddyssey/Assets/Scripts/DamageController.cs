@@ -8,7 +8,7 @@ public class DamageController : MonoBehaviour
 
     private float DamageFlashTime = 0.2f;
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         PlayerController Health = this.GetComponent<PlayerController>();
 
@@ -17,6 +17,7 @@ public class DamageController : MonoBehaviour
         {
             StartCoroutine(DamageAnim(PlayerColor));
             Health.health -= 1;
+            Debug.Log("Health Remaining: " + Health.health);
         }
     }
 

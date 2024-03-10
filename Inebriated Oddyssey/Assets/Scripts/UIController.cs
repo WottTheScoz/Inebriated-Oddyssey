@@ -27,12 +27,6 @@ public class UIController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void EarnScore()
     {
         //Called in Enemy script with an OnTriggerEnter2D void, triggers when projectile hits Enemy collider

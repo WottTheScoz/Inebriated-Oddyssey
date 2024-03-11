@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class MapManager : MonoBehaviour
 {
+    private GameManager GM;
+    private GameObject Map;
     public GameObject[] level1Ob;
-    
+
+    private void Awake()
+    {
+        GM = Map.GetComponent<GameManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +22,17 @@ public class MapManager : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (GM.isGameOver == true)
+        {
+            SceneManager.LoadScene("GameplayScene");
+        }
+    }
 
     private void LevelChecker()
     {
-        Scene level= SceneManager.GetActiveScene();
+        Scene level = SceneManager.GetActiveScene();
 
         string levelName = level.name;
         

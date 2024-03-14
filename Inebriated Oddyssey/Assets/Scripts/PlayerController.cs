@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
         position.y = position.y + MoveSpeed * vInput * Time.deltaTime;
 
         _rb.MovePosition(position);
+
+        Regen();
     }
 
     private void Flip()
@@ -51,5 +53,17 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void Regen()
+    {
+        if (health < 3)
+        {
+            /* pointer error, holding for now
+            health += * Time.deltaTime; */
+
+            health ++;
+            //very basic rn, putting method in fixedupdate for deltatime iirc. this might work honestly (delete comment later)
+        }
     }
 }

@@ -7,16 +7,19 @@ public class EnemyMovement : MonoBehaviour
     public Transform player;
     public int speed = 3;
 
+    private Rigidbody2D ThisRB;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ThisRB = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        Vector3 position = ThisRB.position;
+        position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        ThisRB.MovePosition(position);
     }
 }

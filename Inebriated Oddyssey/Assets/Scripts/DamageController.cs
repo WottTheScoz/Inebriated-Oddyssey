@@ -5,7 +5,6 @@ using UnityEngine;
 public class DamageController : MonoBehaviour
 {
     private SpriteRenderer PlayerColor;
-    private BoxCollider2D PlayerCollider;
 
     private float DamageFlashTime = 0.2f;
     private float IFramesTimer;
@@ -15,7 +14,7 @@ public class DamageController : MonoBehaviour
     void Start()
     {
         PlayerColor = GetComponent<SpriteRenderer>();
-        PlayerCollider = GetComponent<BoxCollider2D>();
+        IFramesTimer = IFramesLength;
     }
 
     void Update()
@@ -23,30 +22,29 @@ public class DamageController : MonoBehaviour
         //Calculates the amount of time I-Frames last.
         if(IFramesTimer < IFramesLength)
         {
-            PlayerCollider.enabled = false;
             IFramesTimer += Time.deltaTime;
-        }
-        else
-        {
-            PlayerCollider.enabled = true;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public void ChangeHealth(int amount)
     {
-        PlayerController Health = GetComponent<PlayerController>();
+        PlayerController playerController = GetComponent<PlayerController>();
 
-        //Makes the player flash red and lose health when hit by an enemy.
-        if (col.gameObject.tag == "Enemy" && IFramesTimer >= IFramesLength)
+        if (amount < 0 && IFramesTimer >= IFramesLength)
         {
+            //Damages the player if they don't have active I-Frames.
+            playerController.health += amount;
             StartCoroutine(DamageAnim(PlayerColor));
-
-            Health.health -= 1;
-
             IFramesTimer = 0;
-
-            Debug.Log("Health Remaining: " + Health.health);
         }
+        else if (amount > 0 && playerController.health < playerController.maxHealth)
+        {
+            //Increases the player's health if it less than the max health.
+            playerController.health += amount;
+        }
+
+        //Resets the health regeneration timer when this function is called.
+        playerController.RegenTimer = 0;
     }
 
     //Makes a sprite flash red.

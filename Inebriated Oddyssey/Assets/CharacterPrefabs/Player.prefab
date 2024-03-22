@@ -97,7 +97,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3656841812937359343}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3656841812937359338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.983626, y: 10.0266695}
+  m_Size: {x: 5.22, y: 5.22}
   m_EdgeRadius: 0
 --- !u!114 &2091010805
 MonoBehaviour:
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   health: 3
+  maxHealth: 3
 --- !u!114 &312632928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0ae21009ad3894f9661c733f1df71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColor: {fileID: 3656841812937359336}
+  IFramesLength: 2
 --- !u!1 &3656841813374227161
 GameObject:
   m_ObjectHideFlags: 0

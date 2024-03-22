@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float MoveSpeed = 5f;
+    public float RegenTimer;
 
     public int health = 3;
     public int maxHealth = 3;
 
     private float vInput;
     private float hInput;
-    private float RegenTimer;
     private float RegenTimerMax = 4;
 
     private Rigidbody2D _rb;
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        RegenTimer = RegenTimerMax;
     }
 
     void Update()
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         hInput = Input.GetAxisRaw("Horizontal");
 
         // Move the player
-        Vector2 moveDirection = new Vector2(hInput, vInput);
+        //Vector2 moveDirection = new Vector2(hInput, vInput);
 
         // Flip the sprite if changing direction
         if ((isFacingRight && hInput < 0) || (!isFacingRight && hInput > 0))
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         _rb.MovePosition(position);
 
-        if(RegenTimer < RegenTimerMax)
+        if (RegenTimer < RegenTimerMax)
         {
             RegenTimer += Time.deltaTime;
         }
@@ -74,7 +75,6 @@ public class PlayerController : MonoBehaviour
             health += * Time.deltaTime; */
 
             health ++;
-            Debug.Log("Health Remaining: " + health);
             //very basic rn, putting method in fixedupdate for deltatime iirc. this might work honestly (delete comment later)
         }
     }

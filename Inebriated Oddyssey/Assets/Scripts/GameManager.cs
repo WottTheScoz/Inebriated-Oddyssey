@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+
+        UpdateScore();
     }
 
     public static GameManager Instance
@@ -82,7 +84,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore()
     {
-
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        healthText.text = "Health: " + playerController.health.ToString();
     }
 
     public void NextLevel()

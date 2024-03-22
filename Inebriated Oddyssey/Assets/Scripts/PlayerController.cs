@@ -7,9 +7,12 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed = 5f;
 
     public int health = 3;
+    public int maxHealth = 3;
 
     private float vInput;
     private float hInput;
+    private float RegenTimer;
+    private float RegenTimerMax = 4;
 
     private Rigidbody2D _rb;
 
@@ -44,7 +47,15 @@ public class PlayerController : MonoBehaviour
 
         _rb.MovePosition(position);
 
-        Regen();
+        if(RegenTimer < RegenTimerMax)
+        {
+            RegenTimer += Time.deltaTime;
+        }
+        else
+        {
+            Regen();
+            RegenTimer = 0;
+        }
     }
 
     private void Flip()
@@ -57,12 +68,13 @@ public class PlayerController : MonoBehaviour
 
     void Regen()
     {
-        if (health < 3)
+        if (health < maxHealth)
         {
             /* pointer error, holding for now
             health += * Time.deltaTime; */
 
             health ++;
+            Debug.Log("Health Remaining: " + health);
             //very basic rn, putting method in fixedupdate for deltatime iirc. this might work honestly (delete comment later)
         }
     }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text healthText;
     public TMP_Text scoreText;
     private static GameManager instance;
+    public PlayerController playerController;
 
 
     private void Awake()
@@ -46,6 +47,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             Time.timeScale = 0;
+        }
+
+        if (playerController.health <= 0)
+        {
+            isGameOver = true;
+            Destroy(player.gameObject);
         }
 
         if (isGameOver == true)

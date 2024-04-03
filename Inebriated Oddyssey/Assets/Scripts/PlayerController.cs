@@ -16,13 +16,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rb;
 
-    private bool isFacingRight = true;
+    [HideInInspector] public bool isFacingRight = true;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         RegenTimer = RegenTimerMax;
-    }
+}
 
     void Update()
     {

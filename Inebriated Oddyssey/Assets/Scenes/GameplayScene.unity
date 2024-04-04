@@ -237,6 +237,8 @@ GameObject:
   - component: {fileID: 662653652}
   - component: {fileID: 662653651}
   - component: {fileID: 662653654}
+  - component: {fileID: 662653656}
+  - component: {fileID: 662653655}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -323,6 +325,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1249111135}
+--- !u!114 &662653655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662653650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2778a9006ae3be49bab2ecc215d1c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &662653656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662653650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597dd01981064d741b9b43be1c995a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1Ob: []
 --- !u!1 &671553899
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,17 +852,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3656841812937359339, guid: 85b64af8c573f874b825d6d22d9c6666, type: 3}
   m_PrefabInstance: {fileID: 847499736}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1249111143 stripped
+--- !u!114 &1249111148
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2091010805, guid: 85b64af8c573f874b825d6d22d9c6666, type: 3}
-  m_PrefabInstance: {fileID: 847499736}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249111135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2778a9006ae3be49bab2ecc215d1c9a, type: 3}
+  m_Script: {fileID: 11500000, guid: d7ff8bd0e1faba74b90c2bbd81462bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSpeed: 5
+  RegenTimer: 0
+  health: 3
+  maxHealth: 3
+  isFacingRight: 1
 --- !u!1 &1388047907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1135,7 @@ PrefabInstance:
       objectReference: {fileID: 1249111141}
     - target: {fileID: 903354136, guid: 9344108debec285498fe1b407d17f9ed, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7883850125522924400, guid: 9344108debec285498fe1b407d17f9ed, type: 3}
       propertyPath: m_RootOrder
@@ -1194,7 +1227,7 @@ MonoBehaviour:
   isGameOver: 0
   healthText: {fileID: 1397031966}
   scoreText: {fileID: 985025403}
-  playerController: {fileID: 1249111143}
+  playerController: {fileID: 1249111148}
 --- !u!4 &1833617646
 Transform:
   m_ObjectHideFlags: 0

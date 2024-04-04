@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text healthText;
     public TMP_Text scoreText;
     private static GameManager instance;
+    public PlayerController playerController;
 
 
     private void Awake()
@@ -48,10 +49,18 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
         }
 
+        if (playerController.health <= 0)
+        {
+            isGameOver = true;
+            Destroy(player.gameObject);
+        }
+
         if (isGameOver == true)
         {
             Time.timeScale = 0;
         }
+
+        UpdateScore();
     }
 
     public static GameManager Instance
@@ -82,7 +91,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateScore()
     {
-
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        healthText.text = "Health: " + playerController.health.ToString();
     }
 
     public void NextLevel()

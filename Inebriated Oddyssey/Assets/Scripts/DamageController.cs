@@ -4,21 +4,47 @@ using UnityEngine;
 
 public class DamageController : MonoBehaviour
 {
-    public SpriteRenderer PlayerColor;
+    private SpriteRenderer PlayerColor;
 
     private float DamageFlashTime = 0.2f;
+    private float IFramesTimer;
+    [SerializeField]
+    private float IFramesLength = 2;
 
-    void OnTriggerEnter2D(Collider2D col)
+    void Start()
     {
-        PlayerController Health = this.GetComponent<PlayerController>();
+        PlayerColor = GetComponent<SpriteRenderer>();
+        IFramesTimer = IFramesLength;
+    }
 
-        //Makes the player flash red when hit by an enemy.
-        if (col.gameObject.tag == "Enemy")
+    void Update()
+    {
+        //Calculates the amount of time I-Frames last.
+        if(IFramesTimer < IFramesLength)
         {
-            StartCoroutine(DamageAnim(PlayerColor));
-            Health.health -= 1;
-            Debug.Log("Health Remaining: " + Health.health);
+            IFramesTimer += Time.deltaTime;
         }
+    }
+
+    public void ChangeHealth(int amount)
+    {
+        PlayerController playerController = GetComponent<PlayerController>();
+
+        if (amount < 0 && IFramesTimer >= IFramesLength)
+        {
+            //Damages the player if they don't have active I-Frames.
+            playerController.health += amount;
+            StartCoroutine(DamageAnim(PlayerColor));
+            IFramesTimer = 0;
+        }
+        else if (amount > 0 && playerController.health < playerController.maxHealth)
+        {
+            //Increases the player's health if it less than the max health.
+            playerController.health += amount;
+        }
+
+        //Resets the health regeneration timer when this function is called.
+        playerController.RegenTimer = 0;
     }
 
     //Makes a sprite flash red.

@@ -5,20 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float MoveSpeed = 5f;
+    public float RegenTimer;
 
     public int health = 3;
+    public int maxHealth = 3;
 
     private float vInput;
     private float hInput;
+    private float RegenTimerMax = 4;
 
     private Rigidbody2D _rb;
 
-    private bool isFacingRight = true;
+    [HideInInspector] public bool isFacingRight = true;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-    }
+        RegenTimer = RegenTimerMax;
+}
 
     void Update()
     {
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour
         hInput = Input.GetAxisRaw("Horizontal");
 
         // Move the player
-        Vector2 moveDirection = new Vector2(hInput, vInput);
+        //Vector2 moveDirection = new Vector2(hInput, vInput);
 
         // Flip the sprite if changing direction
         if ((isFacingRight && hInput < 0) || (!isFacingRight && hInput > 0))
@@ -43,6 +47,16 @@ public class PlayerController : MonoBehaviour
         position.y = position.y + MoveSpeed * vInput * Time.deltaTime;
 
         _rb.MovePosition(position);
+
+        if (RegenTimer < RegenTimerMax)
+        {
+            RegenTimer += Time.deltaTime;
+        }
+        else
+        {
+            Regen();
+            RegenTimer = 0;
+        }
     }
 
     private void Flip()
@@ -51,5 +65,17 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    void Regen()
+    {
+        if (health < maxHealth)
+        {
+            /* pointer error, holding for now
+            health += * Time.deltaTime; */
+
+            health ++;
+            //very basic rn, putting method in fixedupdate for deltatime iirc. this might work honestly (delete comment later)
+        }
     }
 }

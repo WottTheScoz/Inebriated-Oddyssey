@@ -1,0 +1,29 @@
+{
+    "Weapons": [
+        {
+            "weaponName": "Pocket Knife",
+            "damage": 1,
+            "level": 1
+        },
+        {
+            "weaponName": "Beer Bottle",
+            "damage": 2,
+            "level": 2
+        },
+        {
+            "weaponName": "Molotov",
+            "damage": 3,
+            "level": 3
+        },
+        {
+            "weaponName": "Fire Breath",
+            "damage": 3,
+            "level": 4
+        },
+        {
+            "weaponName": "Spirit Energy",
+            "damage": 4,
+            "level": 5
+        }
+    ]
+}

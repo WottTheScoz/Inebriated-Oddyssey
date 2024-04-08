@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour
 
     private void Awake()
     {
-        GM = Map.GetComponent<GameManager>();
+       // GM = Map.GetComponent<GameManager>();
         writeTXT();
         writeXML();
         writeJson();
@@ -29,10 +29,7 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (GM.isGameOver == true)
-        {
-            SceneManager.LoadScene("GameplayScene");
-        }
+
     }
 
     private void LevelChecker()
@@ -56,8 +53,7 @@ public class MapManager : MonoBehaviour
     
         if (!File.Exists(xmlPath))
         {
-            using (FileStream xmlStream = File.Create(xmlPath))
-            {
+            
                 using (XmlWriter xmlWriter = XmlWriter.Create(xmlPath))
                 { 
                     xmlWriter.WriteStartElement("Levels");
@@ -65,7 +61,7 @@ public class MapManager : MonoBehaviour
                     xmlWriter.WriteEndElement();
                     xmlWriter.Close();
                 }
-            }
+            
         }
     
     }

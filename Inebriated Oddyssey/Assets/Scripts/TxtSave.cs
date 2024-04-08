@@ -5,13 +5,12 @@ using System.IO;
 
 public class TxtSave : MonoBehaviour
 {
-
-public string textsave = Directory.GetCurrentDirectory() + @"\Assets\SaveData";
+    private string textsave = Directory.GetCurrentDirectory() + @"\Assets\SaveData\" + "TxtFile";
 
     // Start is called before the first frame update
     void Start()
     {
-        StreamWriter newStream = File.CreateText(textsave);
+        //StreamWriter newStream = File.CreateText(textsave);
         TxtSaver();
     }
 
@@ -30,8 +29,8 @@ public string textsave = Directory.GetCurrentDirectory() + @"\Assets\SaveData";
 
         //other one is being mean let's see if maunal closing works
 
-        if(File.Exists(textsave)){
-            StreamWriter newStream = File.AppendText(textsave);
+        if(!File.Exists(textsave)){
+            StreamWriter newStream = File.CreateText(textsave);
             newStream.WriteLine("Game Loaded");
             newStream.Close();
         }

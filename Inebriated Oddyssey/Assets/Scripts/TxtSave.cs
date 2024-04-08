@@ -6,7 +6,7 @@ using System.IO;
 public class TxtSave : MonoBehaviour
 {
 
-public string textsave;
+public string textsave = Directory.GetCurrentDirectory() + @"\Assets\SaveData";
 
     // Start is called before the first frame update
     void Start()

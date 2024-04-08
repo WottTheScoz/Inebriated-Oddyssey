@@ -57,7 +57,7 @@ public class MapManager : MonoBehaviour
                 using (XmlWriter xmlWriter = XmlWriter.Create(xmlPath))
                 { 
                     xmlWriter.WriteStartElement("Levels");
-                    xmlWriter.WriteStartElement("Level 1");
+                    xmlWriter.WriteString("Level 1");
                     xmlWriter.WriteEndElement();
                     xmlWriter.Close();
                 }

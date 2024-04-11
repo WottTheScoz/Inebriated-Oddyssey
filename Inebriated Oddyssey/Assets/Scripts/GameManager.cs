@@ -44,10 +44,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //pause
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Time.timeScale = 0;
-        }
+        //if (Input.GetKey(KeyCode.Escape))
+        //{
+            //Time.timeScale = 0;
+        //}
 
         if (playerController.health <= 0)
         {
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
         UpdateScore();
     }
+
 
     public static GameManager Instance
     {

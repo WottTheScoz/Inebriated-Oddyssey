@@ -30,4 +30,25 @@ public class Map : MonoBehaviour
         spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
         spawn.SetActive(false);
     }
+
+    void IndexOutOfRange()
+    {
+        try
+        {
+            Spawner();
+        }
+        catch (System.IndexOutOfRangeException ioorException)
+        {
+            int rand = Random.Range(0, 200);
+            Instantiate(Objects[rand], transform.position, Quaternion.identity);
+            //here the spawnpoints will become unactive after they are spawned in by the function
+            spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
+            spawn.SetActive(false);
+            Debug.Log(ioorException.ToString());
+        }
+        finally
+        {
+            Debug.Log("Objects have been placed along the map");
+        }
+    }
 }

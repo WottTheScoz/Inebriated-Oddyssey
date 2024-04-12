@@ -12,7 +12,7 @@ public class Map : MonoBehaviour
     private GameObject spawn;
     void Start()
     {
-        Spawner();
+        IndexOutOfRange();
     }
 
     // Update is called once per frame
@@ -39,11 +39,6 @@ public class Map : MonoBehaviour
         }
         catch (System.IndexOutOfRangeException ioorException)
         {
-            int rand = Random.Range(0, 200);
-            Instantiate(Objects[rand], transform.position, Quaternion.identity);
-            //here the spawnpoints will become unactive after they are spawned in by the function
-            spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
-            spawn.SetActive(false);
             Debug.Log(ioorException.ToString());
         }
         finally

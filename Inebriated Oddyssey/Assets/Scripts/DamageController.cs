@@ -11,9 +11,23 @@ public class DamageController : MonoBehaviour
     [SerializeField]
     private float IFramesLength = 2;
 
+    public delegate void PlayerDamageDelegate();
+    public event PlayerDamageDelegate OnChangeHealth;
+
+    void OnCollisionStay2D(Collision2D enemy)
+    {
+        if (enemy.gameObject.tag.ToLower() == "enemy")
+        {
+            EnemyDamageController enemyDC = enemy.gameObject.GetComponent<EnemyDamageController>();
+            ChangeHealth(enemyDC.DamageOutput);
+            //Debug.Log("Enemy hit player");
+        }
+    }
+
     void Start()
     {
         PlayerColor = GetComponent<SpriteRenderer>();
+
         IFramesTimer = IFramesLength;
     }
 
@@ -45,6 +59,9 @@ public class DamageController : MonoBehaviour
 
         //Resets the health regeneration timer when this function is called.
         playerController.RegenTimer = 0;
+
+        //Notifies subscribers.
+        OnChangeHealth?.Invoke();
     }
 
     //Makes a sprite flash red.

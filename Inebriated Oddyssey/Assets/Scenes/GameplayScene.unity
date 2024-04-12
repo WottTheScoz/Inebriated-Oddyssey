@@ -1226,10 +1226,8 @@ MonoBehaviour:
   enemy1: {fileID: 225795386}
   enemy2: {fileID: 0}
   enemy3: {fileID: 0}
-  isGameOver: 0
   healthText: {fileID: 1397031966}
   scoreText: {fileID: 985025403}
-  playerController: {fileID: 1249111148}
 --- !u!4 &1833617646
 Transform:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class EnemyDamageController : MonoBehaviour
 
     [SerializeField] int health = 3;
 
-    //Enemy dealing damage to player
-    void OnCollisionStay2D(Collision2D player)
+    //Enemy dealing damage to player, moved to DamageController
+    /*void OnCollisionStay2D(Collision2D player)
     {
         DamageController damageController = player.gameObject.GetComponent<DamageController>();
 
@@ -18,7 +18,7 @@ public class EnemyDamageController : MonoBehaviour
             damageController.ChangeHealth(DamageOutput);
             Debug.Log("Enemy hit player");
         }
-    }
+    }*/
 
     private void Attack()
     {

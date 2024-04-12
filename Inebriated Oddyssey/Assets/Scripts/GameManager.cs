@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
-    public bool isGameOver;
     public TMP_Text healthText;
     public TMP_Text scoreText;
+
     private static GameManager instance;
-    public PlayerController playerController;
+
+    private PlayerController playerCon;
+    private DamageController playerDC;
 
 
     private void Awake()
@@ -37,7 +39,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isGameOver = false;
+        playerCon = player.GetComponent<PlayerController>();
+        playerDC = player.GetComponent<DamageController>();
+
+        //Calls UpdateHealth to display HP on start.
+        UpdateHealth();
+
+        //Assigning listeners.
+        playerDC.OnChangeHealth += UpdateHealth;
+        playerDC.OnChangeHealth += GameOver;
+
+        playerCon.OnRegen += UpdateHealth;
     }
 
     // Update is called once per frame
@@ -49,18 +61,7 @@ public class GameManager : MonoBehaviour
             //Time.timeScale = 0;
         //}
 
-        if (playerController.health <= 0)
-        {
-            isGameOver = true;
-            Destroy(player.gameObject);
-        }
-
-        if (isGameOver == true)
-        {
-            Time.timeScale = 0;
-        }
-
-        UpdateScore();
+        //UpdateScore();
     }
 
 
@@ -79,9 +80,13 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        //if health = 0
+        if(playerCon.health <= 0)
         {
-            isGameOver = true;
+            Time.timeScale = 0;
+            Destroy(player);
+
+            //Unsubscribes listener.
+            playerDC.OnChangeHealth -= GameOver;
         }
     }
 
@@ -90,10 +95,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdateScore()
+    public void UpdateHealth()
     {
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        healthText.text = "Health: " + playerController.health.ToString();
+        healthText.text = "Health: " + playerCon.health.ToString();
+
+        if(playerCon.health <= 0)
+        {
+            //Unsubscribes listener.
+            playerDC.OnChangeHealth -= UpdateHealth;
+            playerCon.OnRegen -= UpdateHealth;
+        }
     }
 
     public void NextLevel()

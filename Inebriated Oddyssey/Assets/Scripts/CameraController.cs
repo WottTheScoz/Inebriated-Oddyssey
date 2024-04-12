@@ -8,7 +8,15 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
+        FollowPlayer();
+    }
+
+    void FollowPlayer()
+    {
+        if(player != null)
+        {
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
+        }
     }
 }
 

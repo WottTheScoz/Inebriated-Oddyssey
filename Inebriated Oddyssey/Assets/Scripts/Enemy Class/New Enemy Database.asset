@@ -15,3 +15,5 @@ MonoBehaviour:
   Enemies:
   - EnemyName: UFO
     EnemyPrefab: {fileID: 7883850125522924402, guid: 9344108debec285498fe1b407d17f9ed, type: 3}
+  - EnemyName: Flying Eye
+    EnemyPrefab: {fileID: 3653515889401792064, guid: acf4ee2439d190243be54b0c5a8c48d0, type: 3}

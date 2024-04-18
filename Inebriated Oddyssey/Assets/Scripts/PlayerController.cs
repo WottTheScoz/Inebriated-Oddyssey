@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     public float RegenTimer;
 
     public int health = 3;
-    public int maxHealth = 3;
+    [HideInInspector]public int maxHealth = 3;
 
     private float vInput;
     private float hInput;
     private float RegenTimerMax = 4;
 
+    private Vector2 lookDirection = new Vector2(1,0);
+
     private Rigidbody2D _rb;
+    private Animator animator;
 
     [HideInInspector] public bool isFacingRight = true;
 
@@ -23,7 +26,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        maxHealth = health;
+
         _rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         RegenTimer = RegenTimerMax;
     }
 
@@ -32,6 +38,17 @@ public class PlayerController : MonoBehaviour
         // Get input
         vInput = Input.GetAxisRaw("Vertical");
         hInput = Input.GetAxisRaw("Horizontal");
+
+        Vector2 move = new Vector2(hInput, vInput);
+
+        if(!Mathf.Approximately(move.x, 0.0f))
+        {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Speed", move.magnitude);
 
         // Move the player
         //Vector2 moveDirection = new Vector2(hInput, vInput);

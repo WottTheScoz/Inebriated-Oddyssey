@@ -5,13 +5,19 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     // This is gonna become a get compenent of the level 1 array created in map manager 
-    private GameObject[] Objects;
+    public GameObject[] Objects;
+    private GameObject mapCon;
+    private MapManager.Level Level;
+    
+    
     // Start is called before the first frame update
     
     //this is referring to the spawn-points that are set on each map.
     private GameObject spawn;
     void Start()
-    {
+    { 
+        Level.LoadScene("Level 1");
+        Level.Spawner(Objects);
         IndexOutOfRange();
     }
 
@@ -20,7 +26,7 @@ public class Map : MonoBehaviour
     {
         
     }
-
+ /*
     void Spawner()
     {
         Objects = GameObject.Find("Main Camera").GetComponent<MapManager>().level1Ob;
@@ -30,12 +36,12 @@ public class Map : MonoBehaviour
         spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
         spawn.SetActive(false);
     }
-
+ */
     void IndexOutOfRange()
     {
         try
         {
-            Spawner();
+            Level.Spawner(Objects);
         }
         catch (System.IndexOutOfRangeException ioorException)
         {

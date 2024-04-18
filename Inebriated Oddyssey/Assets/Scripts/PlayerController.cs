@@ -18,11 +18,14 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool isFacingRight = true;
 
+    public delegate void HPDelegate();
+    public event HPDelegate OnRegen;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         RegenTimer = RegenTimerMax;
-}
+    }
 
     void Update()
     {
@@ -48,15 +51,7 @@ public class PlayerController : MonoBehaviour
 
         _rb.MovePosition(position);
 
-        if (RegenTimer < RegenTimerMax)
-        {
-            RegenTimer += Time.deltaTime;
-        }
-        else
-        {
-            Regen();
-            RegenTimer = 0;
-        }
+        Regen();
     }
 
     private void Flip()
@@ -69,13 +64,18 @@ public class PlayerController : MonoBehaviour
 
     void Regen()
     {
-        if (health < maxHealth)
+        if (RegenTimer < RegenTimerMax)
         {
-            /* pointer error, holding for now
-            health += * Time.deltaTime; */
-
-            health ++;
-            //very basic rn, putting method in fixedupdate for deltatime iirc. this might work honestly (delete comment later)
+            RegenTimer += Time.deltaTime;
+        }
+        else
+        {
+            if (health < maxHealth)
+            {
+                health ++;
+                OnRegen?.Invoke();
+            }
+            RegenTimer = 0;
         }
     }
 }

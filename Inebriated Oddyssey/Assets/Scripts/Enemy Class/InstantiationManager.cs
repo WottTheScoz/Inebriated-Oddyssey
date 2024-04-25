@@ -25,7 +25,7 @@ public class InstantiationManager : MonoBehaviour
 
     void CreateRandomEnemy()
     {
-        int RNG = Random.Range(0, enemyList.Count - 1);
+        int RNG = Random.Range(0, enemyList.Count);
         Instantiate(enemyList[RNG], new Vector3(Random.Range(0, 10), Random.Range(0, 10), 0), Quaternion.identity);
         enemyCount++;
     }

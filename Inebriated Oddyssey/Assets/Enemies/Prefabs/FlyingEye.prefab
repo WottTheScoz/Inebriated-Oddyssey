@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3653515889401792075}
   - component: {fileID: 3653515889401792076}
   m_Layer: 0
-  m_Name: Flying Eye
+  m_Name: FlyingEye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 652127125183247455, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+  enemyName: FlyingEye
   speed: 2
-  lastDirection: 1
 --- !u!114 &3653515889401792076
 MonoBehaviour:
   m_ObjectHideFlags: 0

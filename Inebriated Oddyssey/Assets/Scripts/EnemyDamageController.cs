@@ -5,29 +5,23 @@ using UnityEngine;
 public class EnemyDamageController : MonoBehaviour
 {
     public int DamageOutput = -1;
+    public float damageFlashTime = 0.2f;
 
     [SerializeField] int health = 3;
 
-    //Enemy dealing damage to player, moved to DamageController
-    /*void OnCollisionStay2D(Collision2D player)
+    private SpriteRenderer spriteRend;
+
+    private DamageAnimations damageAnims = new DamageAnimations();
+
+    void Start()
     {
-        DamageController damageController = player.gameObject.GetComponent<DamageController>();
-
-        if (damageController != null)
-        {
-            damageController.ChangeHealth(DamageOutput);
-            Debug.Log("Enemy hit player");
-        }
-    }*/
-
-    private void Attack()
-    {
-
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+        StartCoroutine(damageAnims.NormalDamage(spriteRend, damageFlashTime));
 
         if(health < 1)
         {

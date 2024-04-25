@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 652127125183247455, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+  enemyName: Goblin
   speed: 3
-  lastDirection: 1
 --- !u!114 &4375392967136524885
 MonoBehaviour:
   m_ObjectHideFlags: 0

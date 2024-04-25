@@ -11,6 +11,8 @@ public class DamageController : MonoBehaviour
     [SerializeField]
     private float IFramesLength = 2;
 
+    private DamageAnimations damageAnims = new DamageAnimations();
+
     public delegate void PlayerDamageDelegate();
     public event PlayerDamageDelegate OnChangeHealth;
 
@@ -48,7 +50,7 @@ public class DamageController : MonoBehaviour
         {
             //Damages the player if they don't have active I-Frames.
             playerController.health += amount;
-            StartCoroutine(DamageAnim(PlayerColor));
+            StartCoroutine(damageAnims.NormalDamage(PlayerColor, DamageFlashTime));
             IFramesTimer = 0;
         }
         else if (amount > 0 && playerController.health < playerController.maxHealth)
@@ -62,13 +64,5 @@ public class DamageController : MonoBehaviour
 
         //Notifies subscribers.
         OnChangeHealth?.Invoke();
-    }
-
-    //Makes a sprite flash red.
-    IEnumerator DamageAnim(SpriteRenderer sprite)
-    {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(DamageFlashTime);
-        sprite.color = Color.white;
     }
 }

@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 1084862595786661138}
   - component: {fileID: 3077071856719605264}
   - component: {fileID: 489042633795837993}
-  - component: {fileID: -1687358688119811062}
   - component: {fileID: 4061053661970767089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MushroomProjectile
-  m_TagString: Enemy
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,20 +156,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1687358688119811062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4154492582518178458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39b55ba23ffca64e8fe0a807e83c8c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamageOutput: -1
-  health: 3
 --- !u!114 &4061053661970767089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,4 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launcherObj: {fileID: 6432721059474417583, guid: 43310256f31948e4ba9c42b7cc7f83b3, type: 3}
-  speed: 1
+  boomerang: 0
+  speed: 0.1
+  DamageOutput: -1

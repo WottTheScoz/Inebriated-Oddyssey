@@ -27,4 +27,9 @@ public class GenericTimer
             return "inactive";
         }
     }
+
+    public void TurnTimerOn(bool timerCondition)
+    {
+        timerIsOn = timerCondition;
+    }
 }

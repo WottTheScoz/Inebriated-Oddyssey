@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3653515889401792074}
   - component: {fileID: 3653515889401792075}
   - component: {fileID: 3653515889401792076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlyingEye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf803ab4f10f03e4cbbb71bf1b31e140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 652127125183247455, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
   enemyName: FlyingEye
   speed: 2
 --- !u!114 &3653515889401792076
@@ -185,4 +184,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageOutput: -1
-  health: 3
+  damageFlashTime: 0.2
+  health: 4

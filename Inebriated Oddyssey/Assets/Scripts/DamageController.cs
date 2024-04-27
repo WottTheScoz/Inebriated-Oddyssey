@@ -16,13 +16,17 @@ public class DamageController : MonoBehaviour
     public delegate void PlayerDamageDelegate();
     public event PlayerDamageDelegate OnChangeHealth;
 
-    void OnCollisionStay2D(Collision2D enemy)
+    void OnCollisionStay2D(Collision2D obj)
     {
-        if (enemy.gameObject.tag.ToLower() == "enemy")
+        if (obj.gameObject.tag.ToLower() == "enemy")
         {
-            EnemyDamageController enemyDC = enemy.gameObject.GetComponent<EnemyDamageController>();
+            EnemyDamageController enemyDC = obj.gameObject.GetComponent<EnemyDamageController>();
             ChangeHealth(enemyDC.DamageOutput);
-            //Debug.Log("Enemy hit player");
+        }
+        else if(obj.gameObject.tag.ToLower() == "projectile")
+        {
+            Projectile proj = obj.gameObject.GetComponent<Projectile>();
+            ChangeHealth(proj.DamageOutput);
         }
     }
 

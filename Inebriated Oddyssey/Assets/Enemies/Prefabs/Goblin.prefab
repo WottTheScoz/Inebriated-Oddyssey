@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4375392967136524887}
   - component: {fileID: 4375392967136524884}
   - component: {fileID: 4375392967136524885}
-  m_Layer: 0
+  - component: {fileID: 1982311895961050349}
+  m_Layer: 6
   m_Name: Goblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -169,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf803ab4f10f03e4cbbb71bf1b31e140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 652127125183247455, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
   enemyName: Goblin
   speed: 3
 --- !u!114 &4375392967136524885
@@ -185,4 +185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageOutput: -1
+  damageFlashTime: 0.2
   health: 3
+--- !u!114 &1982311895961050349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375392967136524874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493bb73cbf6e5e44686d124d0851fe4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileObj: {fileID: 4225320185101205276, guid: 6c89e4baf71f9a548b60ff8c27331732, type: 3}
+  direction: 0

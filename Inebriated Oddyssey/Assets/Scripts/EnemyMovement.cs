@@ -61,10 +61,23 @@ public class EnemyMovement : MonoBehaviour
                 MoveTowardsPlayer(position);
                 break;
             case "Mushroom":
-                string timerStatus = attackTimer.Timer(5);
+                MushroomStats mushroom = new MushroomStats();
+                string timerStatus = attackTimer.Timer(mushroom.attackEverySeconds);
                 if(timerStatus == "complete")
                 {
-                    StartCoroutine(AttackAnim(0.8f));
+                    StartCoroutine(AttackAnim(mushroom.attackAnimLength, mushroom.projectileAmount));
+                }
+                else if(timerStatus == "incomplete")
+                {
+                    MoveTowardsPlayer(position);
+                }
+                break;
+            case "Goblin":
+                GoblinStats goblin = new GoblinStats();
+                timerStatus = attackTimer.Timer(goblin.attackEverySeconds);
+                if(timerStatus == "complete")
+                {
+                    StartCoroutine(AttackAnim(goblin.attackAnimLength, goblin.projectileAmount));
                 }
                 else if(timerStatus == "incomplete")
                 {
@@ -85,17 +98,16 @@ public class EnemyMovement : MonoBehaviour
     #endregion
 
     #region Animations
-    IEnumerator AttackAnim(float seconds)
+    IEnumerator AttackAnim(float seconds, int projAmount)
     {
-        bool timerIsOn = attackTimer.timerIsOn;
-        timerIsOn = false;
+        attackTimer.TurnTimerOn(false);
 
         animator.SetBool("Is Attacking", true);
 
         yield return new WaitForSeconds(seconds);
 
-        launcher.CreateProjectiles(3);
-        timerIsOn = true;
+        launcher.CreateProjectiles(projAmount);
+        attackTimer.TurnTimerOn(true);
 
         animator.SetBool("Is Attacking", false);
     }

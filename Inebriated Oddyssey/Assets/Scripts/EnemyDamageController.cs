@@ -13,6 +13,9 @@ public class EnemyDamageController : MonoBehaviour
 
     private DamageAnimations damageAnims = new DamageAnimations();
 
+    public delegate void EnemyDelegate();
+    public event EnemyDelegate OnDestroy;
+
     void Start()
     {
         spriteRend = GetComponent<SpriteRenderer>();
@@ -25,6 +28,7 @@ public class EnemyDamageController : MonoBehaviour
 
         if(health < 1)
         {
+            OnDestroy?.Invoke();
             Destroy(gameObject);
         }
     }

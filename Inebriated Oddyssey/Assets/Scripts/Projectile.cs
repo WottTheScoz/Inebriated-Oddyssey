@@ -6,17 +6,24 @@ public class Projectile : MonoBehaviour
 {
     public GameObject launcherObj;
 
-    public float speed = 1f;
+    public bool boomerang;
 
-    private bool exists;
+    public float speed = 0.1f;
 
-    private Rigidbody2D thisRB;
+    public int DamageOutput = -1;
+
+    [Space(20)]
+    public float existanceTime = 5;
+    public float destroyAnimTime = 0.8f;
+
     private Animator animator;
 
     private ProjectileLauncher launcher;
 
     private GenericTimer existTimer = new GenericTimer();
     private string timerStatus;
+
+    private Vector3 position;
 
     private Vector3 thisDirection;
     Vector3[] directions = new Vector3[]
@@ -30,38 +37,57 @@ public class Projectile : MonoBehaviour
     #region Unity Methods
     void Start()
     {
-        thisRB = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
 
         launcher = launcherObj.GetComponent<ProjectileLauncher>();
 
-        exists = true;
+        if(boomerang)
+        {
+            speed *= -1;
+        }
     }
 
     void FixedUpdate()
     {
-        if(exists)
-        {
-            Movement(thisDirection);
-        }
+        Movement(thisDirection, boomerang);
 
-        timerStatus = existTimer.Timer(5);
+        timerStatus = existTimer.Timer(existanceTime);
         if(timerStatus == "complete")
         {
-            StartCoroutine(DestroyAnim(0.8f));
+            StartCoroutine(DestroyAnim(destroyAnimTime));
         }
     }
     #endregion
 
-    void Movement(Vector3 direction)
+    #region Movement
+    void Movement(Vector3 direction, bool shouldBoomerang)
     {
-        thisRB.AddForce(speed * direction);
+        if(shouldBoomerang == true)
+        {
+            gameObject.transform.position += ((-(speed * speed / 2) + (speed)) * direction);
+            speed += 0.002f;
+        }
+        else
+        {
+            gameObject.transform.position += (speed * direction);
+        }
     }
 
     public void GetDirection(int whichDirection)
     {
         thisDirection = directions[whichDirection];
     }
+    #endregion
+
+    #region Collision
+    void OnCollisionEnter2D(Collision2D obj)
+    {
+        if(obj.gameObject.tag.ToLower() == "player")
+        {
+            StartCoroutine(DestroyAnim(destroyAnimTime));
+        }
+    }
+    #endregion
 
     #region Animations
     IEnumerator DestroyAnim(float seconds)

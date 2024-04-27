@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7883850125522924414}
   - component: {fileID: 903354136}
   - component: {fileID: 4218178184691239755}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UFO
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf803ab4f10f03e4cbbb71bf1b31e140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3656841812937359343, guid: 85b64af8c573f874b825d6d22d9c6666, type: 3}
+  enemyName: UFO
   speed: 3
 --- !u!114 &4218178184691239755
 MonoBehaviour:
@@ -162,3 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageOutput: -1
+  damageFlashTime: 0.2
+  health: 3

@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
-    public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
+    public GameObject enemyType1;
+    public GameObject enemyType2;
+    public GameObject enemyType3;
+    public GameObject enemyType4;
     public TMP_Text healthText;
     public TMP_Text scoreText;
 

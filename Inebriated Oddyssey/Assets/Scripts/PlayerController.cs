@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     public int health = 3;
     [HideInInspector]public int maxHealth = 3;
 
-    private float vInput;
-    private float hInput;
+    public float vInput;
+    public float hInput;
     private float RegenTimerMax = 4;
 
     private Vector2 lookDirection = new Vector2(1,0);

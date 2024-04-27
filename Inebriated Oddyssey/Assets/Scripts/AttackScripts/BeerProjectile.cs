@@ -41,6 +41,7 @@ public class BeerProjectile : MonoBehaviour
             if (enemyDamage != null)
             {
                 enemyDamage.TakeDamage(1);
+                Destroy(gameObject);
             }
         }
 

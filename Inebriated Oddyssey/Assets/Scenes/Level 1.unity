@@ -12254,11 +12254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3653515889401792077, guid: acf4ee2439d190243be54b0c5a8c48d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.17
+      value: -6.23
       objectReference: {fileID: 0}
     - target: {fileID: 3653515889401792077, guid: acf4ee2439d190243be54b0c5a8c48d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.89
+      value: -1.02
       objectReference: {fileID: 0}
     - target: {fileID: 3653515889401792077, guid: acf4ee2439d190243be54b0c5a8c48d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12683,9 +12683,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 746857461}
-  enemy1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy3: {fileID: 0}
+  enemyType1: {fileID: 0}
+  enemyType2: {fileID: 0}
+  enemyType3: {fileID: 0}
+  enemyType4: {fileID: 0}
   healthText: {fileID: 741130183}
   scoreText: {fileID: 197946809}
 --- !u!4 &768342307
@@ -74642,6 +74643,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6916619835178809878, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916619835178809878, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916619835178809878, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916619835178809878, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766992868969265773, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: beerPrefab
+      value: 
+      objectReference: {fileID: 4103770163661033561, guid: 46bb2907443486445ab6cff28de32a7a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
 --- !u!1 &1172092751
@@ -74762,6 +74783,8 @@ MonoBehaviour:
   RegenTimer: 0
   health: 3
   maxHealth: 3
+  vInput: 0
+  hInput: 0
   isFacingRight: 1
 --- !u!1 &1581584629
 GameObject:

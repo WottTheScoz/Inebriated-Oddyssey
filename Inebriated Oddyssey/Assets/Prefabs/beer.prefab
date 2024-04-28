@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  beerDamage: 1
 --- !u!50 &-6730859492973714289
 Rigidbody2D:
   serializedVersion: 4

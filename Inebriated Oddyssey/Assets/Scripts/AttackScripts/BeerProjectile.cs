@@ -6,6 +6,7 @@ public class BeerProjectile : MonoBehaviour
 {
     Vector3 direction;
     [SerializeField] float speed;
+    [SerializeField] int beerDamage = 1;
 
 
     Rigidbody2D rgbd;
@@ -34,14 +35,15 @@ public class BeerProjectile : MonoBehaviour
 
         //objects size and location of collider
         Collider2D[] hit = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-        //detects an enemydamagecontrollerscript when it hits something and if so does damage
+        //detects an enemydamagecontrollerscript when it hits something and if so does damage and destroys projectile
         foreach (Collider2D ed in hit)
         {
             EnemyDamageController enemyDamage = ed.GetComponent<EnemyDamageController>();
             if (enemyDamage != null)
             {
-                enemyDamage.TakeDamage(1);
+                enemyDamage.TakeDamage(beerDamage);
                 Destroy(gameObject);
+                Debug.Log("Beer hit enemy");
             }
         }
 

@@ -49,7 +49,7 @@ public class KnifeAttack : MonoBehaviour
         }
     }
 
-    private void ApplyDamage(Collider2D[] colliders)
+    public void ApplyDamage(Collider2D[] colliders)
     {
         //Detect something when it is within the colliders space
         for (int i = 0; i < colliders.Length; i++)

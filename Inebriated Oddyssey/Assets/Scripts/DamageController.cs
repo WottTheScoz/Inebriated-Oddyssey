@@ -11,16 +11,22 @@ public class DamageController : MonoBehaviour
     [SerializeField]
     private float IFramesLength = 2;
 
+    private DamageAnimations damageAnims = new DamageAnimations();
+
     public delegate void PlayerDamageDelegate();
     public event PlayerDamageDelegate OnChangeHealth;
 
-    void OnCollisionStay2D(Collision2D enemy)
+    void OnCollisionStay2D(Collision2D obj)
     {
-        if (enemy.gameObject.tag.ToLower() == "enemy")
+        if (obj.gameObject.tag.ToLower() == "enemy")
         {
-            EnemyDamageController enemyDC = enemy.gameObject.GetComponent<EnemyDamageController>();
+            EnemyDamageController enemyDC = obj.gameObject.GetComponent<EnemyDamageController>();
             ChangeHealth(enemyDC.DamageOutput);
-            //Debug.Log("Enemy hit player");
+        }
+        else if(obj.gameObject.tag.ToLower() == "projectile")
+        {
+            Projectile proj = obj.gameObject.GetComponent<Projectile>();
+            ChangeHealth(proj.DamageOutput);
         }
     }
 
@@ -48,7 +54,7 @@ public class DamageController : MonoBehaviour
         {
             //Damages the player if they don't have active I-Frames.
             playerController.health += amount;
-            StartCoroutine(DamageAnim(PlayerColor));
+            StartCoroutine(damageAnims.NormalDamage(PlayerColor, DamageFlashTime));
             IFramesTimer = 0;
         }
         else if (amount > 0 && playerController.health < playerController.maxHealth)
@@ -62,13 +68,5 @@ public class DamageController : MonoBehaviour
 
         //Notifies subscribers.
         OnChangeHealth?.Invoke();
-    }
-
-    //Makes a sprite flash red.
-    IEnumerator DamageAnim(SpriteRenderer sprite)
-    {
-        sprite.color = Color.red;
-        yield return new WaitForSeconds(DamageFlashTime);
-        sprite.color = Color.white;
     }
 }

@@ -5,16 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Spawnpoint
+  - Projectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Enemy
+  - 
   - Water
   - UI
-  - 
-  - 
+  - Enemies
+  - Projectiles
   - 
   - 
   - 

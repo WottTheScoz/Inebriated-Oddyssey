@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public GameObject launcherObj;
 
+    public bool movementOn = true;
     public bool boomerang;
 
     public float speed = 0.1f;
@@ -49,7 +50,10 @@ public class Projectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        Movement(thisDirection, boomerang);
+        if(movementOn)
+        {
+            Movement(thisDirection, boomerang);
+        }
 
         timerStatus = existTimer.Timer(existanceTime);
         if(timerStatus == "complete")
@@ -92,6 +96,7 @@ public class Projectile : MonoBehaviour
     #region Animations
     IEnumerator DestroyAnim(float seconds)
     {
+        movementOn = false;
         animator.SetBool("Explode", true);
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);

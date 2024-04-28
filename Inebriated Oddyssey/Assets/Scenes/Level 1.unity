@@ -12285,9 +12285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 62128484}
-  enemy1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy3: {fileID: 0}
+  enemyType1: {fileID: 0}
+  enemyType2: {fileID: 0}
+  enemyType3: {fileID: 0}
+  enemyType4: {fileID: 0}
   healthText: {fileID: 2131681159}
   scoreText: {fileID: 1468979751}
 --- !u!4 &338325380
@@ -74813,6 +74814,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7766992868969265773, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: beerPrefab
+      value: 
+      objectReference: {fileID: 4103770163661033561, guid: 46bb2907443486445ab6cff28de32a7a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
 --- !u!1 &2131681158

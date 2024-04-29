@@ -6,47 +6,65 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class MapManager : MonoBehaviour
 {
-    private GameManager GM;
-    private GameObject Map;
-    public GameObject[] level1Ob;
+    private Scene index;
+    private GameObject spawn;
+    
 
-    private void Awake()
+    private List<string> levelNames = new List<string>()
     {
-       // GM = Map.GetComponent<GameManager>();
-        writeTXT();
-        writeXML();
-        writeJson();
-    }
+        "Level 1",
+        "GameplayScene",
+        "SampleScene"
+    };
 
-    // Start is called before the first frame update
-    void Start()
+
+    //this function will serve as the initializer for the array of obstacles that every level has
+    public void Spawner(GameObject[] arr)
     {
-        LevelChecker();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-
-    }
-
-    private void LevelChecker()
-    {
-        Scene level = SceneManager.GetActiveScene();
-
-        string levelName = level.name;
-        
-        if (levelName == "Level 1")
+        if (arr != null)
         {
-            Debug.Log("your already in level 1");
+            spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
+            int rand = UnityEngine.Random.Range(0, arr.Length);
+            Instantiate(arr[rand], spawn.transform.position, Quaternion.identity);
+            //here the spawnpoints will become unactive after they are spawned in by the function
+            spawn.SetActive(false);
         }
         else
         {
-            SceneManager.LoadScene("Level 1");
+            Debug.Log("Obstacle Array is NULL. Please go back and ensure the obstacle array is loaded correctly");
+        }
+
+    }
+    
+    public void LoadScene(string scene)
+    {
+            
+
+        if (levelNames.Contains(scene))
+        {
+            SceneManager.LoadScene(scene);
+        }
+        else
+        {
+            Debug.Log("The Scene that you are trying to load doesnt exist");
         }
     }
+
+    public void LoadScene(int buildIndex)
+    {
+        if (SceneManager.GetActiveScene().buildIndex == buildIndex)
+        {
+            Debug.Log("you are already in the level 1 Scene");
+        }
+        else
+        {
+            SceneManager.LoadScene(buildIndex);
+        }
+    }
+
     
     public void writeXML() {
         string xmlPath = Directory.GetCurrentDirectory() + @"\Assets\SaveData\" + "MapXML.xml";

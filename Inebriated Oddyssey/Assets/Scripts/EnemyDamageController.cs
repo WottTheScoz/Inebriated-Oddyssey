@@ -7,6 +7,8 @@ public class EnemyDamageController : MonoBehaviour
     public int DamageOutput = -1;
     public float damageFlashTime = 0.2f;
 
+    int expAmount = 10;
+
     [SerializeField] int health = 3;
 
     private SpriteRenderer spriteRend;
@@ -30,6 +32,7 @@ public class EnemyDamageController : MonoBehaviour
         {
             OnDestroy?.Invoke();
             Destroy(gameObject);
+            ExperienceManager.Instance.AddExperience(expAmount);
         }
     }
 }

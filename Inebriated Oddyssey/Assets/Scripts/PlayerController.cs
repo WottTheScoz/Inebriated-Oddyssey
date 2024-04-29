@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public delegate void HPDelegate();
     public event HPDelegate OnRegen;
 
+    int currentExperience;
+    int MaxExperience;
+    int level;
+
     void Start()
     {
         maxHealth = health;
@@ -95,4 +99,31 @@ public class PlayerController : MonoBehaviour
             RegenTimer = 0;
         }
     }
+    private void OnEnable()
+    {
+        ExperienceManager.Instance.OnExperienceChange += HandleExperienceChange;
+    }
+
+    private void OnDisable()
+    {
+        ExperienceManager.Instance.OnExperienceChange -= HandleExperienceChange;
+    }
+
+    private void HandleExperienceChange(int newExperience)
+    {
+        currentExperience += newExperience;
+        if(currentExperience >= MaxExperience)
+        {
+            LevelUp();
+        }
+    }
+    private void LevelUp()
+    {
+        maxHealth += 3;
+        health = maxHealth;
+        currentExperience = 0;
+        MaxExperience += 50;
+        level += 1;
+    }
 }
+

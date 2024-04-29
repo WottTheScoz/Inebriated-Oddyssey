@@ -7,6 +7,8 @@ public class EnemyDamageController : MonoBehaviour
     public int DamageOutput = -1;
     public float damageFlashTime = 0.2f;
 
+    int expAmount = 10;
+
     [SerializeField] int health = 3;
     [SerializeField] int scoreValue = 1; // Add a variable to store the score value
 
@@ -36,6 +38,7 @@ public class EnemyDamageController : MonoBehaviour
             AddScore(scoreValue);
             OnDestroy?.Invoke();
             Destroy(gameObject);
+            ExperienceManager.Instance.AddExperience(expAmount);
         }
     }
 

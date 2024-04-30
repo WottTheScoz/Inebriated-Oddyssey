@@ -39,6 +39,7 @@ public class MapManager : MonoBehaviour
 
     }
     
+    
     public void LoadScene(string scene)
     {
             
@@ -63,6 +64,11 @@ public class MapManager : MonoBehaviour
         {
             SceneManager.LoadScene(buildIndex);
         }
+    }
+
+    public void GenerateGrid()
+    {
+        
     }
 
     

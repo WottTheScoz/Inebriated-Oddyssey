@@ -29,7 +29,22 @@ public class AllWeapons
 
 public class WeaponManager : MonoBehaviour
 {
+    public List<GameObject> weapons = new List<GameObject>();
+
     void Start()
+    {
+        //SaveWeapons();
+    }
+
+    public void ActivateWeapon(int weapon)
+    {
+        if(weapons.Contains(weapons[weapon]))
+        {
+            weapons[weapon].SetActive(true);
+        }
+    }
+
+    void SaveWeapons()
     {
         //Creates a list of new weapons
         List<Weapon> localWeapons = new List<Weapon>();

@@ -12,13 +12,20 @@ public class GameManager : MonoBehaviour
     public GameObject enemyType2;
     public GameObject enemyType3;
     public GameObject enemyType4;
+    public GameObject UICanvas;
     public TMP_Text healthText;
     public TMP_Text scoreText;
 
     private static GameManager instance;
 
+    private int level;
+
     private PlayerController playerCon;
     private DamageController playerDC;
+    private Timer worldTimer;
+
+    //private PlayerLevel levelClass = new PlayerLevel();
+    private SaveLevel saveLevel = new SaveLevel();
 
 
     private void Awake()
@@ -42,6 +49,10 @@ public class GameManager : MonoBehaviour
     {
         playerCon = player.GetComponent<PlayerController>();
         playerDC = player.GetComponent<DamageController>();
+        worldTimer = UICanvas.GetComponent<Timer>();
+
+        level = saveLevel.LoadLevel();
+        //level = levelClass.level;
 
         //Calls UpdateHealth to display HP on start.
         UpdateHealth();
@@ -51,6 +62,8 @@ public class GameManager : MonoBehaviour
         playerDC.OnChangeHealth += GameOver;
 
         playerCon.OnRegen += UpdateHealth;
+
+        worldTimer.OnTimerCompletion += Win;
     }
 
     // Update is called once per frame
@@ -91,9 +104,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PlayAudio()
+    public void Win()
     {
+        //Saves current level.
+        saveLevel.SaveCurrentLevel(level);
 
+        //Unsubs listener.
+        worldTimer.OnTimerCompletion -= Win;
     }
 
     public void UpdateHealth()
@@ -108,8 +125,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NextLevel()
+    public void LevelUp()
     {
+        level++;
 
+        WeaponManager weaponManager = gameObject.GetComponent<WeaponManager>();
+        weaponManager.ActivateWeapon(level);
     }
 }

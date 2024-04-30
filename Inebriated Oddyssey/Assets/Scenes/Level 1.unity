@@ -12314,6 +12314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156609971}
   - component: {fileID: 156609970}
+  - component: {fileID: 156609972}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -12350,6 +12351,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156609972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156609969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2778a9006ae3be49bab2ecc215d1c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objects:
+  - {fileID: 6241188558617645449, guid: f79775c8b3d101843ae9064605fce0d6, type: 3}
+  - {fileID: 5807941546735449404, guid: 034fb28a19637c3448a6cc09bde635e6, type: 3}
+  - {fileID: 2831525883361587236, guid: 9eeb62b82ae17a04781635d943772a11, type: 3}
+  - {fileID: 5993746528234521478, guid: db6d4c12f6c9ce548b07fed8428fd914, type: 3}
+  - {fileID: 6726025297692972312, guid: a2a883695ce15c44fbc67ccf32ba2e83, type: 3}
+  - {fileID: 5104374338219765308, guid: 9b6639ee40cb92449b65dcf7c90494ee, type: 3}
+  spawnPoints:
+  - {fileID: 1694601134}
+  - {fileID: 6142580}
+  - {fileID: 1581584629}
+  - {fileID: 200391990}
+  - {fileID: 1050371165}
+  - {fileID: 50042798}
+  - {fileID: 59432288}
+  - {fileID: 596822457}
+  - {fileID: 971024275}
+  - {fileID: 627344021}
+  - {fileID: 1698213891}
+  - {fileID: 1067755911}
+  - {fileID: 957653395}
+  - {fileID: 634173971}
+  - {fileID: 1711769656}
+  map: {fileID: 1033078502}
+  border: {fileID: 114169800}
+  tile_main: {fileID: 0}
+  tile_border: {fileID: 0}
 --- !u!1 &162204376
 GameObject:
   m_ObjectHideFlags: 0
@@ -74632,13 +74672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597dd01981064d741b9b43be1c995a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1Ob:
-  - {fileID: 6241188558617645449, guid: f79775c8b3d101843ae9064605fce0d6, type: 3}
-  - {fileID: 5993746528234521478, guid: db6d4c12f6c9ce548b07fed8428fd914, type: 3}
-  - {fileID: 5104374338219765308, guid: 9b6639ee40cb92449b65dcf7c90494ee, type: 3}
-  - {fileID: 2831525883361587236, guid: 9eeb62b82ae17a04781635d943772a11, type: 3}
-  - {fileID: 5807941546735449404, guid: 034fb28a19637c3448a6cc09bde635e6, type: 3}
-  - {fileID: 6726025297692972312, guid: a2a883695ce15c44fbc67ccf32ba2e83, type: 3}
 --- !u!114 &1061555452
 MonoBehaviour:
   m_ObjectHideFlags: 0

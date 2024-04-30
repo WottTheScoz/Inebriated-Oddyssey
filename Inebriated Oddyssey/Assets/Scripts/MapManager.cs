@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class MapManager : MonoBehaviour
 {
     private Scene index;
-    private GameObject spawn;
+    
     
 
     private List<string> levelNames = new List<string>()
@@ -22,19 +22,12 @@ public class MapManager : MonoBehaviour
 
 
     //this function will serve as the initializer for the array of obstacles that every level has
-    public void Spawner(GameObject[] arr)
+    public void Spawner(GameObject[] arr, GameObject[] spawnPoints)
     {
-        if (arr != null)
+        for(int i = 0; i < spawnPoints.Length; i++)
         {
-            spawn = GameObject.FindGameObjectWithTag("Spawnpoint");
             int rand = UnityEngine.Random.Range(0, arr.Length);
-            Instantiate(arr[rand], spawn.transform.position, Quaternion.identity);
-            //here the spawnpoints will become unactive after they are spawned in by the function
-            spawn.SetActive(false);
-        }
-        else
-        {
-            Debug.Log("Obstacle Array is NULL. Please go back and ensure the obstacle array is loaded correctly");
+            Instantiate(arr[rand], spawnPoints[UnityEngine.Random.Range(0,spawnPoints.Length)].transform.position, Quaternion.identity);
         }
 
     }

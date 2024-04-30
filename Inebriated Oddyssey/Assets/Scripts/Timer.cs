@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         if (timeLeft < 0)
         {
             OnTimerCompletion?.Invoke();
-            SceneManager.LoadScene("New Scene");
+            SceneManager.LoadScene(0);
         }
     }
 }

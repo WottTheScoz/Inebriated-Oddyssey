@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpiritAwakening : MonoBehaviour
 {
     //public float areaOfEffect = 3f;
-    public LayerMask enemyLayer;
     public int spiritDamage = 1;
     EnemyDamageController enemyDamage;
 
@@ -16,7 +15,7 @@ public class SpiritAwakening : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyLayer);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
 
         foreach (Collider2D ed in colliders)
         {

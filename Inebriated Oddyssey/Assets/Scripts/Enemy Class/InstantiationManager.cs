@@ -22,7 +22,7 @@ public class InstantiationManager : MonoBehaviour
     {
         //Instantiates a random enemy from the enemy list.
         int RNG = Random.Range(0, enemyList.Count);
-        GameObject newEnemy = Instantiate(enemyList[RNG], new Vector3(Random.Range(0, 10), Random.Range(0, 10), 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyList[RNG], gameObject.transform.position + new Vector3(Random.Range(-20, 20), Random.Range(-20, 20), 0), Quaternion.identity);
 
         //Notifies ReduceEnemyCount when the enemy is destroyed.
         EnemyDamageController enemyDC = newEnemy.GetComponent<EnemyDamageController>();

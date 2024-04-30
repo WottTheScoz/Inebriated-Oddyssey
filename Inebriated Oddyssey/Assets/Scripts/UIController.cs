@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public GameObject gameManagerObj;
     public TMP_Text scoreText;
     public TMP_Text healthText;
     public Slider progressBar; // Reference to the progress bar UI element
 
     int score;
     int health;
+
+    float lastProgress;
+
+    GameManager gameManager;
 
     //For dynamic changes to enemy strength
     public int damage;
@@ -27,6 +32,8 @@ public class UIController : MonoBehaviour
         healthText.text = "Health: " + health;
         progressBar.maxValue = 5; // Set the maximum value of the progress bar to 5
         progressBar.value = 0; // Initialize the progress bar value to 0
+
+        gameManager = gameManagerObj.GetComponent<GameManager>();
     }
 
     void Update()
@@ -46,7 +53,16 @@ public class UIController : MonoBehaviour
             score = currentScore;
             scoreText.text = "Score: " + score.ToString();
             // Increment the progress bar value by 1 for each score gained
+            lastProgress = progressBar.value;
             progressBar.value = score % (int)progressBar.maxValue;
+            float currentProgress = progressBar.value;
+            if(lastProgress > currentProgress)
+            {
+                gameManager.LevelUp();
+                progressBar.maxValue += 3;
+                //Debug.Log(progressBar.maxValue);
+            }
+            lastProgress = currentProgress;
         }
     }
 

@@ -24,7 +24,7 @@ public class SpiritAwakening : MonoBehaviour
             if (enemyDamage != null)
             {
                 enemyDamage.TakeDamage(spiritDamage);
-                Debug.Log("Spirit hit enemy");
+                //Debug.Log("Spirit hit enemy");
             }
         }
     }

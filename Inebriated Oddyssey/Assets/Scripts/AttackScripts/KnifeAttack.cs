@@ -31,7 +31,7 @@ public class KnifeAttack : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Knife Attack");
+        //Debug.Log("Knife Attack");
         timer = attackTime;
 
         if(playerController.isFacingRight == true)
@@ -60,7 +60,7 @@ public class KnifeAttack : MonoBehaviour
             {
                 //Cycles thru all the colliders, grabs the enemydamagecontroller component, and applies the knife damage value to take damage function
                 colliders[i].GetComponent<EnemyDamageController>().TakeDamage(KnifeDamage);
-                Debug.Log("Knife hit enemy");
+                //Debug.Log("Knife hit enemy");
             }
         }
     }

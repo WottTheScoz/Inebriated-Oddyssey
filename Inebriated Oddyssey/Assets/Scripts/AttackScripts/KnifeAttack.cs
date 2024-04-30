@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnifeAttack : MonoBehaviour
 {
-    float attackTime = 2.5f;
+    public float attackTime = 2f;
     float timer;
 
     [SerializeField] GameObject sliceLeft;

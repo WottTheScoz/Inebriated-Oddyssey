@@ -75563,6 +75563,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1709791059, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 652127125183247455, guid: 2db6707ca9699834f81f6c6b524a9bad, type: 3}
       propertyPath: m_Name
       value: Man

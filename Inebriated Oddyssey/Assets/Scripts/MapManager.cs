@@ -27,7 +27,8 @@ public class MapManager : MonoBehaviour
         for(int i = 0; i < spawnPoints.Length; i++)
         {
             int rand = UnityEngine.Random.Range(0, arr.Length);
-            Instantiate(arr[rand], spawnPoints[UnityEngine.Random.Range(0,spawnPoints.Length)].transform.position, Quaternion.identity);
+            Instantiate(arr[rand], spawnPoints[i].transform.position, Quaternion.identity);
+            spawnPoints[i].SetActive(false);
         }
 
     }

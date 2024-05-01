@@ -14,20 +14,9 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     //this is referring to the spawn-points that are set on each map.
     
-    Grid grid = null;
-    public Tilemap map = null;
-    public Tilemap border = null;
-    public Tile tile_main = null;
-    public Tile tile_border = null;
-
+    
     void Start()
     {
-        /*
-        level = GameObject.FindObjectOfType<MapManager>();
-        grid = FindObjectOfType<Grid>();
-        GenerateMap();
-        GenerateBorder();
-         */
         level = GameObject.FindObjectOfType<MapManager>();
         
         if (level == null)

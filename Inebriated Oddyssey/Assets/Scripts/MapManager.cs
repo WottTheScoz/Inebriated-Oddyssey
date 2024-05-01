@@ -24,11 +24,13 @@ public class MapManager : MonoBehaviour
     //this function will serve as the initializer for the array of obstacles that every level has
     public void Spawner(GameObject[] arr, GameObject[] spawnPoints)
     {
+        int randSpawn = UnityEngine.Random.Range(12, spawnPoints.Length);
         
-        
-        for(int i = 0; i < spawnPoints.Length; i++)
+        for(int i = 0; i < randSpawn; i++)
         {
-            Collider2D hitCollider = Physics2D.OverlapCircle(spawnPoints[i].transform.position, 0.1f);
+            int randPoint = UnityEngine.Random.Range(0, spawnPoints.Length);
+            
+            Collider2D hitCollider = Physics2D.OverlapCircle(spawnPoints[randPoint].transform.position, 0.1f);
             if (hitCollider != null)
             {
                 // If the spawn point is occupied, skip to the next iteration
@@ -36,8 +38,8 @@ public class MapManager : MonoBehaviour
             }
             
             int rand = UnityEngine.Random.Range(0, arr.Length);
-            Instantiate(arr[rand], spawnPoints[i].transform.position, Quaternion.identity);
-            spawnPoints[i].SetActive(false);
+            Instantiate(arr[rand], spawnPoints[randPoint].transform.position, Quaternion.identity);
+            spawnPoints[randPoint].SetActive(false);
         }
 
     }
